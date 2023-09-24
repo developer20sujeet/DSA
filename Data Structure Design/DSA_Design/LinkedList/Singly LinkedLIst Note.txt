@@ -1,0 +1,49 @@
+﻿Certainly, here's a summary of the operations we've covered for Singly Linked List:
+
+1. **Creating a Node Class**
+   - Created a class for the node structure with `Data` and `Next` properties.
+
+2. **Initialization**
+   - Created an empty linked list with `Head` and `Tail` set to null.
+
+3. **AddFirst()**
+   - Added a new node at the beginning of the list and updated the `Head`.
+
+4. **TraverseAndPrint()**
+   - Traversed through the list and printed each node's data.
+
+5. **AddLast()**
+   - Added a new node at the end of the list and updated the `Tail`.
+
+6. **AddAtPosition()**
+   - Inserted a node at a specific position in the list.
+
+7. **DeleteFirst()**
+   - Removed the first node and updated the `Head`.
+
+8. **DeleteLast()**
+   - Removed the last node and updated the `Tail`.
+
+9. **DeleteAtPosition()**
+   - Removed a node at a specific position in the list.
+
+10. **Reverse()**
+    - Reversed the linked list in-place.
+
+11. **Cycle Detection**
+    - Checked if the linked list contains a cycle using Floyd's cycle detection algorithm.
+
+12. **FindMiddle()**
+    - Found the middle element of the list using a modified two-pointer technique.
+
+For each operation, we discussed:
+- **Method Operation**: What the method is supposed to do.
+- **Algorithmic Code Pattern**: The pattern that the method follows, such as Two-pointer technique.
+- **Algorithm Used**: The specific algorithm used in the method, if any.
+- **Data Structure Used**: That we are working with a Singly Linked List.
+- **Time Complexity**: The Big O time complexity of the operation.
+- **Space Complexity**: The Big O space complexity of the operation.
+- **Visualization**: A step-by-step walkthrough of how each operation works on the list.
+- **Test Method**: Code for testing the respective method.
+
+Would you like to move on to the next topic or revisit any of the above?
