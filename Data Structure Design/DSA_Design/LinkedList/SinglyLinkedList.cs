@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DSA_Design.LinkedList
 {
@@ -21,7 +22,7 @@ namespace DSA_Design.LinkedList
         /// Reference to the next node in the linked list.
         /// Self - Referencial Property 
         /// </summary>
-        public Node Next { get; set; }
+        public Node Next { get; set; } // Self Referencial 
 
         /// <summary>
         /// Constructor to create a new node.
@@ -38,7 +39,7 @@ namespace DSA_Design.LinkedList
     public class SinglyLinkedList
     {
         // Head node to point to the first node in the list
-        public Node Head { get; set; }
+        public Node? Head { get; set; }
 
         public SinglyLinkedList()
         {
@@ -46,6 +47,7 @@ namespace DSA_Design.LinkedList
             Head = null;
         }
 
+        #region Addition  
         public void AddFirst(int data)
         {
 
@@ -169,61 +171,10 @@ namespace DSA_Design.LinkedList
             }
         }
 
-
-        public void TraverseAndPrint()
-        {
-            // Step 1: Check if the list is empty
-            if (Head == null)
-            {
-                Console.WriteLine("The list is empty.");
-                return;
-            }
-
-            // Step 2: Initialize a temporary node to the head
-            Node temp = Head;
-
-            // Step 3: Traverse the list and print the elements
-            while (temp != null)
-            {
-                Console.Write($"{temp.Data} -> ");
-                temp = temp.Next;
-            }
-
-            // Step 4: Print null to indicate the end of the list
-            Console.WriteLine("null");
-        }
-        public int Search(int data)
-        {
-            // Step 1: Initialize variables
-            Node temp = Head;
-            int position = 1;
-
-            // Step 2: Traverse the list and search for the value
-            while (temp != null)
-            {
-                if (temp.Data == data)
-                {
-                    return position;
-                }
-                temp = temp.Next;
-                position++;
-            }
-
-            // Step 3: If the value is not found, return -1
-            return -1;
-        }
+        #endregion
 
 
-
-
-        /// <summary>
-        /// Deletes the first node in the linked list.
-        /// Time Complexity: O(1)
-        /// Space Complexity: O(1)
-        /// Algorithm Used: None (Basic operation)
-        /// Algorithmic Code Pattern: Manipulation
-        /// Data Structure Used: Singly Linked List
-        /// </summary>
+        #region Delete 
         public void DeleteFirst()
         {
             // Step 1: Check if the list is empty
@@ -310,6 +261,7 @@ namespace DSA_Design.LinkedList
             }
 
             // Step 3: Initialize two pointers pointing to Head
+            // Deleting a last node requires keeping track of its predecessor - first .
             Node first = Head;
             Node second = Head;
 
@@ -368,52 +320,52 @@ namespace DSA_Design.LinkedList
             // Step 5: If we reach this point, the value was not found
             Console.WriteLine("Value not found in the list.");
         }
+        #endregion
 
 
-
-        /// <summary>
-        /// Reverses the linked list.
-        /// Time Complexity: O(n)
-        /// Space Complexity: O(1)
-        /// Algorithm Used: None (Basic operation)
-        /// Algorithmic Code Pattern: In-place Reversal
-        /// Data Structure Used: Singly Linked List
-        /// </summary>
-        public void Reverse()
+        #region Search and Find and Print
+        public void TraverseAndPrint()
         {
-            // Step 1: Initialize three pointers - prev, current, and next
-            Node prev = null;
-            Node current = Head;
-            Node next = null;
-
-            // Step 2: Iterate through the linked list
-            while (current != null)
+            // Step 1: Check if the list is empty
+            if (Head == null)
             {
-                // Step 3: Store the next node
-                next = current.Next;
-
-                // Step 4: Reverse the current node's next pointer
-                current.Next = prev;
-
-                // Step 5: Move pointers one position ahead
-                prev = current;
-                current = next;
+                Console.WriteLine("The list is empty.");
+                return;
             }
 
-            // Step 6: Reset the head pointer to the new head (prev)
-            Head = prev;
+            // Step 2: Initialize a temporary node to the head
+            Node temp = Head;
+
+            // Step 3: Traverse the list and print the elements
+            while (temp != null)
+            {
+                Console.Write($"{temp.Data} -> ");
+                temp = temp.Next;
+            }
+
+            // Step 4: Print null to indicate the end of the list
+            Console.WriteLine("null");
         }
+        public int Search(int data)
+        {
+            // Step 1: Initialize variables
+            Node temp = Head;
+            int position = 1;
 
+            // Step 2: Traverse the list and search for the value
+            while (temp != null)
+            {
+                if (temp.Data == data)
+                {
+                    return position;
+                }
+                temp = temp.Next;
+                position++;
+            }
 
-        /// <summary>
-        /// Finds the middle node of the linked list and returns its value.
-        /// Time Complexity: O(n)
-        /// Space Complexity: O(1)
-        /// Algorithm Used: Two-pointer technique (Floyd's Tortoise and Hare)
-        /// Algorithmic Code Pattern: Two Pointers
-        /// Data Structure Used: Singly Linked List
-        /// </summary>
-        /// <returns>The value of the middle node.</returns>
+            // Step 3: If the value is not found, return -1
+            return -1;
+        }
         public int FindMiddle()
         {
 
@@ -448,9 +400,10 @@ namespace DSA_Design.LinkedList
 
             return -1; // Return -1 if the list is empty
         }
+        #endregion
 
 
-
+        #region Cycle Detection
         /// <summary>
         /// Detects whether the linked list contains a cycle.
         /// Algorithm used: Floyd's Cycle Detection Algorithm
@@ -565,6 +518,70 @@ namespace DSA_Design.LinkedList
                 }
             }
         }
+        #endregion
+
+
+        #region Miscellaneous
+        public void Reverse()
+        {
+            // Step 1: Initialize three pointers - prev, current, and next
+            Node prev = null;
+            Node current = Head;
+            Node next = null;
+
+            // Step 2: Iterate through the linked list
+            while (current != null)
+            {
+                // Step 3: Store the next node
+                next = current.Next;
+
+                // Step 4: Reverse the current node's next pointer
+                current.Next = prev;
+
+                // Step 5: Move pointers one position ahead
+                prev = current;
+                current = next;
+            }
+
+            // Step 6: Reset the head pointer to the new head (prev)
+            Head = prev;
+        }
+
+        //Check for Palindrome
+        //Rotate a List
+
+        #endregion
+
+
+        #region Sorting and Merging
+
+        string s;
+
+
+
+
+        #endregion
+
+
+        #region Recursion
+
+        // Recursive Reverse: Reverse the linked list using a recursive function.
+        // Recursive Search: Implement search functionality using recursion.
+
+        string s1 = "";
+
+        #endregion
+
+
+        #region Two-Pointers Techniques
+
+        string s23 = "";
+
+        // N-th Node from the End: Implement a function to find the N-th node from the end of the linked list.
+        // Find Intersection Point: Find the intersection point of two linked lists if they intersect.
+
+
+        #endregion
 
 
     }
