@@ -143,13 +143,15 @@ namespace Algorithms.Others
 
             #region Detect Cycle
             // Detect if the cycle exists using two pointers - tortoise and hare.
+            //  hare.next.next  - because we will move two step 
             while (hare.next != null && hare.next.next != null)
             {
                 tortoise = tortoise.next;           // Move tortoise by one step.
                 hare = hare.next.next;              // Move hare by two steps.
 
+                // Cycle detected, proceed to find the start node.
                 if (tortoise == hare)
-                {             // Cycle detected, proceed to find the start node.
+                {            
                     #region Find Start Node
                     tortoise = head;               // Reset tortoise to the start of the list.
                     while (tortoise != hare)

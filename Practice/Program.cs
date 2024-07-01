@@ -1,36 +1,44 @@
 ﻿
 
 using Practice;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System;
 
-SlinkedList slinkedList = new SlinkedList();
+SinglyLinkedList sll = new SinglyLinkedList();
 
-slinkedList.AddNodeAtBeginning(5);
-slinkedList.AddNodeAtBeginning(4);
-slinkedList.AddNodeAtBeginning(3);
-slinkedList.AddLast(6);
+Node node = sll.CreateLLof10Node();
 
-Console.WriteLine("Print now ");
+//sll.InsertAtBeginning(0);
+//// print
+//sll.PrintAllNode();
 
-Console.ReadKey();
-slinkedList.PrintAllNode();
+//sll.InsertAtEnd(11);
+//sll.PrintAllNode();
 
+//sll.InsertAt(5, 55);
+//sll.PrintAllNode();
 
-slinkedList.AddAtIndex(3, 55);
-Console.WriteLine();
-Console.WriteLine("Print now after index add ");
-Console.ReadKey();
-slinkedList.PrintAllNode();
-
-
-slinkedList.DeleteAtPosition(3);
-Console.WriteLine();
-Console.WriteLine("Print now - Delete at position");
-Console.ReadKey();
-slinkedList.PrintAllNode();
+//-----------------------------------------------------------------------------
+//sll.DeleteFirstNode();
+//sll.PrintAllNode();
 
 
+//sll.DeleteLast();
+//sll.PrintAllNode();
+
+//sll.DeleteAtIndex(3);
+//sll.PrintAllNode();
+
+
+sll.DeleteByValue(3);
+sll.PrintAllNode();
 
 
 
-Console.ReadKey();
+
+
+
+string test = "";
+
+
 
